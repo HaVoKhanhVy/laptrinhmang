@@ -1,0 +1,14 @@
+D:\Full Code + Báo Cáo + thuyết trình\VMU-ChineseChess\VMU-ChineseChess\Source\ChessServer\bin\Debug\ChessServer.exe.config
+D:\Full Code + Báo Cáo + thuyết trình\VMU-ChineseChess\VMU-ChineseChess\Source\ChessServer\bin\Debug\ChessServer.exe
+D:\Full Code + Báo Cáo + thuyết trình\VMU-ChineseChess\VMU-ChineseChess\Source\ChessServer\bin\Debug\ChessServer.pdb
+D:\Full Code + Báo Cáo + thuyết trình\VMU-ChineseChess\VMU-ChineseChess\Source\ChessServer\obj\Debug\ChessServer.csproj.AssemblyReference.cache
+D:\Full Code + Báo Cáo + thuyết trình\VMU-ChineseChess\VMU-ChineseChess\Source\ChessServer\obj\Debug\ChessServer.csproj.CoreCompileInputs.cache
+D:\Full Code + Báo Cáo + thuyết trình\VMU-ChineseChess\VMU-ChineseChess\Source\ChessServer\obj\Debug\ChessServer.exe
+D:\Full Code + Báo Cáo + thuyết trình\VMU-ChineseChess\VMU-ChineseChess\Source\ChessServer\obj\Debug\ChessServer.pdb
+c:\Users\Admin\Downloads\VMU-ChineseChess\VMU-ChineseChess\Source\ChessServer\bin\Debug\ChessServer.exe.config
+c:\Users\Admin\Downloads\VMU-ChineseChess\VMU-ChineseChess\Source\ChessServer\bin\Debug\ChessServer.exe
+c:\Users\Admin\Downloads\VMU-ChineseChess\VMU-ChineseChess\Source\ChessServer\bin\Debug\ChessServer.pdb
+c:\Users\Admin\Downloads\VMU-ChineseChess\VMU-ChineseChess\Source\ChessServer\obj\Debug\ChessServer.csproj.AssemblyReference.cache
+c:\Users\Admin\Downloads\VMU-ChineseChess\VMU-ChineseChess\Source\ChessServer\obj\Debug\ChessServer.csproj.CoreCompileInputs.cache
+c:\Users\Admin\Downloads\VMU-ChineseChess\VMU-ChineseChess\Source\ChessServer\obj\Debug\ChessServer.exe
+c:\Users\Admin\Downloads\VMU-ChineseChess\VMU-ChineseChess\Source\ChessServer\obj\Debug\ChessServer.pdb
