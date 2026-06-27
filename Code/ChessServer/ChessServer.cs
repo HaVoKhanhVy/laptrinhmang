@@ -116,6 +116,7 @@ namespace ChessServer
                     if (room.HasTwoPlayers() && !room.GameStarted)
                     {
                         room.GameStarted = true;
+                        room.MoveHistory.Clear();
                         room.Broadcast("START");
                         Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.WriteLine($"[Phòng {roomId}] Game bắt đầu!");
@@ -169,7 +170,18 @@ namespace ChessServer
                         lock (LockObj)
                         {
                             Room room = Rooms[slot.RoomId];
+                            room.MoveHistory.Add(message.Substring(5).Trim());
                             room.BroadcastExcept(slot, message);
+                        }
+                    }
+                    else if (message.StartsWith("SYNC_REQUEST"))
+                    {
+                        lock (LockObj)
+                        {
+                            Room room = Rooms[slot.RoomId];
+                            string syncMsg = "SYNC:" + string.Join("|", room.MoveHistory.ToArray());
+                            SendMessage(slot.Stream, syncMsg);
+                            Console.WriteLine($"[Phòng {slot.RoomId}] Gửi SYNC ({room.MoveHistory.Count} nước) cho khán giả");
                         }
                     }
                 }
@@ -192,9 +204,11 @@ namespace ChessServer
                 room.RemoveClient(slot);
 
                 if (slot.Role != 2)
+                {
                     room.Broadcast("OPPONENT_DISCONNECTED");
-
-                room.GameStarted = false;
+                    room.GameStarted = false;
+                    room.MoveHistory.Clear();
+                }
                 Console.WriteLine($"[Phòng {slot.RoomId}] Còn {room.ClientCount} người");
             }
 
@@ -243,6 +257,7 @@ namespace ChessServer
     {
         public int Id;
         public bool GameStarted;
+        public readonly List<string> MoveHistory = new List<string>();
         readonly List<ClientSlot> Clients = new List<ClientSlot>();
 
         public Room(int id) { Id = id; }

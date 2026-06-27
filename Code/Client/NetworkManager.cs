@@ -31,6 +31,8 @@ namespace Board
         public static event SimpleHandler OnOpponentDisconnected;
         public delegate void StatusHandler(string status);
         public static event StatusHandler OnStatusChanged;
+        public delegate void SyncHandler(string moves);
+        public static event SyncHandler OnSyncReceived;
 
         public static bool Connect(string ip, int port, int roomId)
         {
@@ -78,6 +80,21 @@ namespace Board
             {
                 if (OnStatusChanged != null)
                     OnStatusChanged("Lỗi gửi nước đi: " + ex.Message);
+            }
+        }
+
+        public static void SendSyncRequest()
+        {
+            if (!IsConnected || stream == null) return;
+            try
+            {
+                byte[] data = Encoding.UTF8.GetBytes("SYNC_REQUEST");
+                stream.Write(data, 0, data.Length);
+            }
+            catch (Exception ex)
+            {
+                if (OnStatusChanged != null)
+                    OnStatusChanged("Lỗi gửi yêu cầu đồng bộ: " + ex.Message);
             }
         }
 
@@ -156,6 +173,16 @@ namespace Board
                 {
                     if (OnMoveReceived != null)
                         OnMoveReceived(fromRow, fromCol, toRow, toCol);
+                });
+            }
+            else if (message.StartsWith("SYNC:"))
+            {
+                string payload = message.Substring(5);
+                string payloadCopy = payload;
+                InvokeOnUI(delegate
+                {
+                    if (OnSyncReceived != null)
+                        OnSyncReceived(payloadCopy);
                 });
             }
             else if (message == "OPPONENT_DISCONNECTED")
